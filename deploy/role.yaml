@@ -1,0 +1,53 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: gogs-operator
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  - services
+  - endpoints
+  - persistentvolumeclaims
+  - configmaps
+  - secrets
+  verbs:
+  - create
+  - update
+  - delete
+  - get
+  - list
+  - watch
+  - patch
+- apiGroups:
+  - ""
+  resources:
+  - namespaces
+  verbs:
+  - get
+- apiGroups:
+  - route.openshift.io
+  resources:
+  - routes
+  verbs:
+  - create
+  - update
+  - delete
+  - get
+  - list
+  - watch
+  - patch
+- apiGroups:
+  - gpte.opentlc.com
+  resources:
+  - gogs
+  - gogs/status
+  verbs:
+  - create
+  - update
+  - delete
+  - get
+  - list
+  - watch
+  - patch- '*'
